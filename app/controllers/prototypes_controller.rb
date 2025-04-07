@@ -3,7 +3,7 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, except: [:index, :new, :create, :edit]
 
   def index
-    @prototypes = Prototype.includes(:user)
+    @prototypes = Prototype.includes(:user).all
   end
 
   def new
