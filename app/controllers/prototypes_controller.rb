@@ -62,5 +62,11 @@ class PrototypesController < ApplicationController
       redirect_to action: :index
     end
   end
-
+  
+  def authorize_user!
+    @prototype = Prototype.find(params[:id])
+    unless current_user == @prototype.user
+      redirect_to root_path, alert: '権限がありません。'
+    end
+  end
 end
